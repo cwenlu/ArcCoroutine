@@ -37,7 +37,7 @@ class UploadProgressRequestBody @JvmOverloads constructor(var requestBody: Reque
             super.write(source, byteCount)
             currentLength+=byteCount
             if(totalLength==0L) totalLength=contentLength()
-            progressListener?.onProgress(currentLength,totalLength,100.0f*currentLength/totalLength)
+            progressListener?.invoke(currentLength,totalLength,100.0f*currentLength/totalLength)
             Timber.i("currentLength:$currentLength,totalLength:$totalLength")
         }
     }
