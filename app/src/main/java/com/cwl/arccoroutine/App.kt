@@ -24,7 +24,7 @@ class App : Application() {
                 addInterceptor(HttpLogInterceptor())
             }
 
-            baseUrl="http://139.159.190.227/api/"
+            baseUrl="http://www.baidu.com/"
         }
 
 
