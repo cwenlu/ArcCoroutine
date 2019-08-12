@@ -1,5 +1,6 @@
 package com.cwl.okhttpdsl.http.exts
 
+import com.cwl.common.okhttp.core.ProgressListener
 import com.cwl.common.util.FileUtil
 import com.cwl.okhttpdsl.http.util.JsonUtil
 import okhttp3.Response
@@ -35,7 +36,7 @@ fun Response.body2File(file: File,progressListener: ProgressListener?):File{
     do {
         len= source.read(buffer, bufferSize.toLong()).toInt()
         currenLength+=len
-        progressListener?.onProgress(currenLength,contentLength,100.0f*currenLength/contentLength)
+        progressListener?.invoke(currenLength,contentLength,100.0f*currenLength/contentLength)
     }while(len!=-1)
     source.close()
     sink.close()
