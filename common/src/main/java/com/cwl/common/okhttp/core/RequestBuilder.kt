@@ -1,9 +1,11 @@
 package com.cwl.okhttpdsl.http.config
 
 import com.cwl.common.di.koin
+import com.cwl.common.okhttp.RequestParams
 import com.cwl.common.okhttp.core.ProgressListener
 import com.cwl.common.okhttp.core.UploadProgressRequestBody
 import com.cwl.okhttpdsl.http.exts.await
+import com.cwl.okhttpdsl.http.util.JsonUtil
 import com.cwl.okhttpdsl.http.util.MediaTypes
 import okhttp3.*
 import java.io.File
@@ -14,7 +16,11 @@ class RequestBuilder @JvmOverloads constructor(
     private var params: ArrayList<Pair<String, Any>> = arrayListOf(),
     private var okHttpConfig: OkHttpConfig = koin.get()
 ) {
+    /**
+     * 下载文件保存名字/路径
+     */
     var fileNameOrPath: String? = null
+    var json:String?=null
 
     fun config(extend: Boolean = true, block: OkHttpConfig.() -> Unit): RequestBuilder {
         okHttpConfig.newConfig(extend).apply(block)
@@ -55,6 +61,16 @@ class RequestBuilder @JvmOverloads constructor(
         return this
     }
 
+    fun json(json:String):RequestBuilder{
+        this.json=json
+        return this
+    }
+
+    inline fun <reified R:RequestParams> json(r:R):RequestBuilder{
+         json=JsonUtil.toJson(r)
+         return this
+     }
+
     /**
      * 保存文件路径
      * @isPath 是否为路径
@@ -78,7 +94,7 @@ class RequestBuilder @JvmOverloads constructor(
 
     fun get() = newCall(buildGetRequest())
 
-    fun post(json: String) = newCall(generateRequestBody(MediaTypes.APPLICATION_JSON_TYPE, json))
+    fun postJson() = newCall(generateRequestBody(MediaTypes.APPLICATION_JSON_TYPE, json?:""))
 
     fun post(progressListener: ProgressListener? = null) = newCall(
         if (isMultiPart()) {
@@ -89,7 +105,7 @@ class RequestBuilder @JvmOverloads constructor(
 
 
     suspend inline fun <reified T> getAwait() = get().await<T>()
-    suspend inline fun <reified T> postAwait(json: String) = post(json).await<T>()
+    suspend inline fun <reified T> postJsonAwait() = postJson().await<T>()
     suspend inline fun <reified T> postAwait(noinline progressListener: ProgressListener? = null) =
         post(progressListener).await<T>()
 

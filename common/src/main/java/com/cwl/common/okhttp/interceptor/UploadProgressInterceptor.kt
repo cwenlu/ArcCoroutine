@@ -1,5 +1,6 @@
 package com.cwl.okhttpdsl.http.interceptor
 
+import com.cwl.common.okhttp.core.ProgressListener
 import com.cwl.common.okhttp.core.UploadProgressRequestBody
 import okhttp3.Interceptor
 import okhttp3.Response

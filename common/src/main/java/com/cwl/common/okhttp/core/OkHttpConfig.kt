@@ -31,7 +31,11 @@ class OkHttpConfig @JvmOverloads internal constructor(
 ) {
 
     init {
-        if (BuildConfig.DEBUG) Timber.plant(Timber.DebugTree())
+        //方便在脱离Android的环境里测试
+        var clazz = Class.forName("com.cwl.common.BuildConfig")
+        if (clazz!=null && BuildConfig.DEBUG) Timber.plant(Timber.DebugTree())
+
+//        if (BuildConfig.DEBUG) Timber.plant(Timber.DebugTree())
     }
 
     //----留着删除用的handle----
