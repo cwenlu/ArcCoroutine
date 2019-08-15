@@ -10,10 +10,14 @@ fun String.http()= RequestBuilder(this)
 
 fun RequestParams.http()=RequestBuilder(url).params(BeanUtil.bean2Map(this))
 
+inline fun <reified R:RequestParams> R.httpJson()=RequestBuilder(url).json(this)
+
 /**
  * bean作为请求载体时继承
  */
-open class RequestParams(open var url:String="")
+abstract class RequestParams{
+    abstract var url:String
+}
 
 /**
  * 全局配置
