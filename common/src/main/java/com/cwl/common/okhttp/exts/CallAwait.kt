@@ -1,6 +1,7 @@
 package com.cwl.okhttpdsl.http.exts
 
 import com.cwl.common.di.koin
+import com.cwl.common.okhttp.core.ProgressListener
 import com.cwl.okhttpdsl.http.config.OkHttpConfig
 import kotlinx.coroutines.CancellableContinuation
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -11,7 +12,7 @@ import java.io.File
 import java.io.IOException
 import kotlin.coroutines.resumeWithException
 
-suspend inline fun <reified T> Call.await(file: File?=null,progressListener: ProgressListener?=null): T = suspendCancellableCoroutine { continuation->
+suspend inline fun <reified T> Call.await(file: File?=null,noinline progressListener: ProgressListener?=null): T = suspendCancellableCoroutine { continuation->
     enqueue(object : Callback {
         override fun onFailure(call: Call, e: IOException) {
             if(continuation.isCancelled) return
