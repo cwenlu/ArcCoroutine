@@ -1,10 +1,6 @@
 package com.cwl.arccoroutine
 
-import com.cwl.common.imageloader.ImageLoaderOptions
-import com.cwl.common.imageloader.PicassoImageLoader
 import org.junit.Test
-
-import org.junit.Assert.*
 import java.lang.reflect.ParameterizedType
 
 /**
@@ -16,7 +12,8 @@ class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
 //        B<ZZ>().cc()
-        kk("s","ss",Any())
+//        kk("s","ss",Any())
+        println("123".indexOf("23"))
     }
 
 

@@ -91,6 +91,10 @@ object deps{
     val lifecycle_extensions="androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     val lifecycle_viewmodel_ktx="androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     val lifecycle_common_java8="androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+    /**
+     * kapt 不使用java8 采用注解时使用
+     */
+    val lifecycle_compiler="androidx.lifecycle:lifecycle-compiler$lifecycle_version"
     val okhttp3_logging_interceptor="com.squareup.okhttp3:logging-interceptor:3.14.1"
     /**
      * json处理
