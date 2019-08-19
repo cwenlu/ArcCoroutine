@@ -15,10 +15,17 @@ import java.lang.reflect.ParameterizedType
 class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
-        B<ZZ>().cc()
+//        B<ZZ>().cc()
+        kk("s","ss",Any())
     }
 
 
+}
+
+fun kk(vararg m:Any){
+    m.forEach {
+        println(it)
+    }
 }
 
 class ZZ
