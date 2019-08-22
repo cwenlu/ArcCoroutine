@@ -8,7 +8,7 @@ package com.cwl.okhttpdsl.http.util
  * }
  * Singleton.getInstance("sss")
  *
- * 如果多个入参A,可以考虑再多增加几个类  支持泛型可变参??? (vararg A)->T
+ * 如果多个入参A,可以考虑再多增加几个类
  *
  */
 open class SingletonHolder<out T,in A>(private val creator:(A)->T){
