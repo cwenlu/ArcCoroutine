@@ -1,11 +1,11 @@
 package com.cwl.okhttpdsl.http.config
 
 import com.cwl.common.di.koin
+import com.cwl.common.exts.bean2Json
 import com.cwl.common.okhttp.RequestParams
 import com.cwl.common.okhttp.core.ProgressListener
 import com.cwl.common.okhttp.core.UploadProgressRequestBody
 import com.cwl.okhttpdsl.http.exts.await
-import com.cwl.okhttpdsl.http.util.JsonUtil
 import com.cwl.okhttpdsl.http.util.MediaTypes
 import okhttp3.*
 import java.io.File
@@ -67,7 +67,7 @@ class RequestBuilder @JvmOverloads constructor(
     }
 
     inline fun <reified R:RequestParams> json(r:R):RequestBuilder{
-         json=JsonUtil.toJson(r)
+         json=r.bean2Json()
          return this
      }
 
@@ -133,7 +133,7 @@ class RequestBuilder @JvmOverloads constructor(
     }
 
     /**
-     * 构建文本请求体 eg: application/json;charset=utf-8
+     * 构建文本请求体 eg: application/json2List;charset=utf-8
      */
     private fun generateRequestBody(mediaType: MediaType?, str: String) = RequestBody.create(mediaType, str)
 

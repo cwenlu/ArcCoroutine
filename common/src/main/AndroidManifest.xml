@@ -1,2 +1,11 @@
 <manifest
-        package="com.cwl.common"/>
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        package="com.cwl.common">
+    <application>
+        <provider
+                android:authorities="${applicationId}.contextprovider"
+                android:name=".util.ContextProvider"
+                android:exported="false"
+                android:enabled="true"/>
+    </application>
+</manifest>

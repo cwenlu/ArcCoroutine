@@ -2,13 +2,13 @@ package com.cwl.common.okhttp
 
 import android.content.Context
 import com.cwl.common.di.koin
+import com.cwl.common.exts.toMap
 import com.cwl.okhttpdsl.http.config.OkHttpConfig
 import com.cwl.okhttpdsl.http.config.RequestBuilder
-import com.cwl.okhttpdsl.http.util.BeanUtil
 
 fun String.http()= RequestBuilder(this)
 
-fun RequestParams.http()=RequestBuilder(url).params(BeanUtil.bean2Map(this))
+fun RequestParams.http()=RequestBuilder(url).params(this.toMap())
 
 inline fun <reified R:RequestParams> R.httpJson()=RequestBuilder(url).json(this)
 

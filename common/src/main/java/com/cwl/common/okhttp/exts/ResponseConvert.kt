@@ -1,8 +1,8 @@
 package com.cwl.okhttpdsl.http.exts
 
+import com.cwl.common.exts.json2Bean
 import com.cwl.common.okhttp.core.ProgressListener
 import com.cwl.common.util.FileUtil
-import com.cwl.okhttpdsl.http.util.JsonUtil
 import okhttp3.Response
 import okio.Okio
 import java.io.File
@@ -21,7 +21,7 @@ inline fun <reified T> Response.convert(noinline converter: (Response.() -> T)? 
 fun Response.body2str(): String = body()?.string() ?: throw RuntimeException("convert2str failure")
 
 inline fun <reified T> Response.body2Bean(): T =
-    JsonUtil.fromJson<T>(body2str()) ?: throw RuntimeException("body2Bean failure")
+    body2str().json2Bean<T>() ?: throw RuntimeException("body2Bean failure")
 
 fun Response.body2File(file: File,progressListener: ProgressListener?):File{
     FileUtil.createNewFile(file.absolutePath)

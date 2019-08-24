@@ -53,7 +53,7 @@ class BasicParamsInterceptor private constructor(
                 "form-data"->{
                     //
                 }
-                "json"->{
+                "json2List"->{
                     //
                 }
             }

@@ -5,7 +5,7 @@ import okhttp3.MediaType
 object MediaTypes {
     val APPLICATION_ATOM_XML_TYPE = MediaType.parse("application/atom+xml;charset=utf-8")
     val APPLICATION_FORM_URLENCODED_TYPE = MediaType.parse("application/x-www-form-urlencoded;charset=utf-8")
-    val APPLICATION_JSON_TYPE = MediaType.parse("application/json;charset=utf-8")
+    val APPLICATION_JSON_TYPE = MediaType.parse("application/json2List;charset=utf-8")
     val APPLICATION_OCTET_STREAM_TYPE = MediaType.parse("application/octet-stream")
     val APPLICATION_SVG_XML_TYPE = MediaType.parse("application/svg+xml;charset=utf-8")
     val APPLICATION_XHTML_XML_TYPE = MediaType.parse("application/xhtml+xml;charset=utf-8")
