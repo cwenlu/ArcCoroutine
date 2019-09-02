@@ -25,6 +25,7 @@ suspend inline fun <reified T> Call.await(file: File?=null,noinline progressList
                 if(response.isSuccessful){
                     if(T::class === File::class) response.body2File(file?:File(koin.get<OkHttpConfig>().diskCacheDirectory,parseFileName(response)),progressListener) as T
                     else response.convert<T>()?:throw NullPointerException("Response body is null: $response")
+
                 }else{
                     throw HttpException(response.code(),response.message())
                 }

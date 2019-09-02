@@ -131,6 +131,10 @@ class HttpLogInterceptor @JvmOverloads constructor(var printResponseHeader: Bool
                 "\n$responsePrefixEnd END HTTP (" + buffer.size() + "-byte body)"
             }
         }
+        while(responseMessage.toByteArray().size>4000){
+            Timber.i(responseMessage.substring(0,4000))
+            responseMessage=responseMessage.substring(4000)
+        }
         Timber.i(responseMessage)
         return response
     }

@@ -1,6 +1,8 @@
 package com.cwl.common.exts
 
 import java.util.*
+import kotlin.reflect.full.memberProperties
+import kotlin.reflect.jvm.isAccessible
 
 /**
 
@@ -95,3 +97,14 @@ fun Any.copyTo(target:Any,isCover:Boolean=true){
         }
     }
 }
+
+/**
+ * 返回类属性值封装信息
+ */
+fun Any.description()
+        = javaClass.kotlin.memberProperties
+    .map {
+        it.isAccessible=true
+        "${it.name}: ${it.get(this@description)}"
+    }
+    .joinToString(separator = " , ",prefix = "[",postfix = "]")

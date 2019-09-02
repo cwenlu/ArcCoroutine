@@ -3,9 +3,13 @@ package com.cwl.okhttpdsl.http.exts
 import com.cwl.common.exts.json2Bean
 import com.cwl.common.okhttp.core.ProgressListener
 import com.cwl.common.util.FileUtil
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import okhttp3.Response
 import okio.Okio
 import java.io.File
+import kotlin.coroutines.CoroutineContext
 
 /**
  * 转换器

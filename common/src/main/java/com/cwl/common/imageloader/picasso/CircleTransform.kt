@@ -1,4 +1,4 @@
-package com.cwl.common.imageloader
+package com.cwl.common.imageloader.picasso
 
 import android.graphics.*
 import com.squareup.picasso.Transformation

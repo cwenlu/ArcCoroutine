@@ -3,7 +3,7 @@ package com.cwl.common.imageloader
 import android.widget.ImageView
 import java.io.File
 
-interface IImageLoader<ILO : ImageLoaderOptions> {
+interface ImageLoader<ILO : ImageLoaderOptions> {
     /**
      * 获取loader的options
      */

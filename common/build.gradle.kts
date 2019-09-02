@@ -1,5 +1,6 @@
 import org.jetbrains.kotlin.config.KotlinCompilerVersion
-plugins{
+
+plugins {
     id("com.android.library")
     kotlin("android")
     kotlin("android.extensions")
@@ -13,10 +14,10 @@ android {
     defaultConfig {
         minSdkVersion(15)
         targetSdkVersion(29)
-        versionCode=1
-        versionName="1.0"
+        versionCode = 1
+        versionName = "1.0"
 
-        testInstrumentationRunner="androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
     }
 
@@ -26,6 +27,12 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
 
+    }
+
+    androidExtensions { isExperimental = true }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 
 }
@@ -41,7 +48,9 @@ api(
     deps.lifecycle_extensions,
     deps.lifecycle_viewmodel_ktx,
     deps.lifecycle_common_java8,
+    deps.lifecycle_livedata_ktx,
     deps.appcompat,
+    deps.recyclerview,
     deps.koin_core
 
 )

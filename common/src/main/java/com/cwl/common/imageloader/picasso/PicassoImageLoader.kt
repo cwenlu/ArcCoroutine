@@ -1,14 +1,17 @@
-package com.cwl.common.imageloader
+package com.cwl.common.imageloader.picasso
 
 import android.content.Context
 import android.widget.ImageView
+import com.cwl.common.imageloader.ImageLoader
+import com.cwl.common.imageloader.ImageLoaderOptions
 import com.squareup.picasso.LruCache
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.RequestCreator
 import java.io.File
 import java.lang.reflect.ParameterizedType
-import java.lang.reflect.Type
-open class PicassoImageLoader<ILO : ImageLoaderOptions>(var context: Context) : IImageLoader<ImageLoaderOptions> {
+
+open class PicassoImageLoader<ILO : ImageLoaderOptions>(var context: Context) :
+    ImageLoader<ImageLoaderOptions> {
 
     private var PICASSO_CACHE="picasso-cache"
     private var lruCache:LruCache = LruCache(context)
