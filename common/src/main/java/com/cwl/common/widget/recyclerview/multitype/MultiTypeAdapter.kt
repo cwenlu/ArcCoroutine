@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 
  */
 open class MultiTypeAdapter(var items: List<Any> = emptyList()) :RecyclerView.Adapter<CommonViewHolder>() {
-    private val typedItemViewManager=TypedItemViewManager<Any>()
+    protected val typedItemViewManager=TypedItemViewManager<Any>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommonViewHolder {
         return CommonViewHolder(parent,typedItemViewManager.get(viewType)?.layoutId!!)
@@ -30,6 +30,10 @@ open class MultiTypeAdapter(var items: List<Any> = emptyList()) :RecyclerView.Ad
 
     fun <T> register(typedItemView:TypedItemView<T>){
         typedItemViewManager.add(typedItemView as TypedItemView<Any>)
+    }
+
+    fun <T> register(viewType: Int,typedItemView:TypedItemView<T>){
+        typedItemViewManager.add(viewType,typedItemView as TypedItemView<Any>)
     }
 
 
